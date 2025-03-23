@@ -1,8 +1,7 @@
-
 USE charity_platform
 
 /*
-1.	Create a view named �UserWithReminders� to display UserName, UserPhoneNumber, and UserEmail for
+1.	Create a view named "UserWithReminders" to display UserName, UserPhoneNumber, and UserEmail for
 every user which has their UserReminder value set to �Yes�
 (CREATE VIEW, LIKE)
 */
