@@ -1,6 +1,6 @@
 -- Holiday Tour
 
--- 1.	Display All Staff Information for every staff whose email contains word ‘@gmail’.
+-- 1.	Display All Staff Information for every staff whose email contains word â€˜@gmailâ€™.
 --(LIKE)
 
 SELECT *
@@ -14,7 +14,7 @@ SELECT MC.CustomerID, MC.CustomerName, MC.CustomerEmail, MC.CustomerPhone
 FROM MsCustomer MC
 JOIN Ticket TK ON MC.CustomerID = TK.TicketID
 
--- 3.	Display DestinationID, DestinationName, DestinationLocation, and Total Visit (obtained from total destinations is visited then add the word ‘ Times’ after it) for every destination which Total Visit is greater than or equals three times and sort by Total Visit descendingly.
+-- 3.	Display DestinationID, DestinationName, DestinationLocation, and Total Visit (obtained from total destinations is visited then add the word â€˜ Timesâ€™ after it) for every destination which Total Visit is greater than or equals three times and sort by Total Visit descendingly.
 --(CAST, COUNT, JOIN, GROUP BY, HAVING, ORDER BY)
 
 SELECT MD.DestinationID, MD.DestinationName, MD.DestinationLocation, CAST(COUNT(MD.DestinationID) AS varchar) + ' Times' AS [Total Visit]
@@ -44,7 +44,7 @@ WHERE DATEPART (MONTH,TK.PurchaseDate) = 6
 GROUP BY TK.TicketID, MC.CustomerID, MC.CustomerName, MS.StaffID, MS.StaffName, TK.PurchaseDate
 
 
---5.	Display CustomerID, CustomerName, CustomerEmail, Phone Number (Obtained from CustomerPhone replacing ‘+62’ with ‘0’), DestinationID, and DestinationName for every customer who never visit the destination and customer whose email contains word ‘yahoo’.
+--5.	Display CustomerID, CustomerName, CustomerEmail, Phone Number (Obtained from CustomerPhone replacing â€˜+62â€™ with â€˜0â€™), DestinationID, and DestinationName for every customer who never visit the destination and customer whose email contains word â€˜yahooâ€™.
 --(STUFF, NOT EXISTS, LIKE)
 
 SELECT MC.CustomerID, MC.CustomerName, MC.CustomerEmail, STUFF(MC.CustomerPhone, 1,3,'0') AS [Phone Number], MD.DestinationID, MD.DestinationName, MD.DestinationPrice
@@ -83,7 +83,7 @@ JOIN MsDestination MD ON TD.DestinationID = MD.DestinationID,
 WHERE RIGHT (MC.CustomerID,1)%2 = 1
 GROUP BY MC.CustomerID, MC.CustomerName, MC.CustomerEmail, MC.CusomerDOB, MC.CustomerPhone, SUB2.KONTOL
 
---7.	Display a view named ‘Yogyakarta_Vacation_List’ to display DestinationTypeName (Obtained from lowering all character in DestinationTypeName), DestinationName, DestinationPrice, DestinationLocation, and DestinationDescription for every destination which contains word ‘Yogyakarta’.
+--7.	Display a view named â€˜Yogyakarta_Vacation_Listâ€™ to display DestinationTypeName (Obtained from lowering all character in DestinationTypeName), DestinationName, DestinationPrice, DestinationLocation, and DestinationDescription for every destination which contains word â€˜Yogyakartaâ€™.
 --(CREATE VIEW, LOWER, LIKE)
 
 CREATE VIEW Yogyakarta_Vacation_List AS 
@@ -94,7 +94,7 @@ WHERE MD.DestinationLocation LIKE '%Yogyakarta%'
 
 
 
---8.	Create a view named ‘economic_customer’ to display CustomerID, CustomerPhone, CustomerEmail, and CustomerName for every customer who did visit a destination which price is above the average all of destination price and purchased the ticket in even month. For final output, the is no duplicate row.
+--8.	Create a view named â€˜economic_customerâ€™ to display CustomerID, CustomerPhone, CustomerEmail, and CustomerName for every customer who did visit a destination which price is above the average all of destination price and purchased the ticket in even month. For final output, the is no duplicate row.
 --(CREATE VIEW,  DISTINCT, AVG, MONTH)
 
 CREATE VIEW economic_customer AS
